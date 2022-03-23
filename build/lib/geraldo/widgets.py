@@ -148,7 +148,7 @@ class ObjectValue(Label):
 
         # Checks this is an expression
         tokens = EXP_TOKENS.split(attribute_name)
-        tokens = filter(bool, tokens) # Cleans empty parts
+        tokens = list(filter(bool, tokens)) # Cleans empty parts
         if len(tokens) > 1:
             values = {}
             for token in tokens:
@@ -193,7 +193,7 @@ class ObjectValue(Label):
     def action_count(self, attribute_name=None):
         # Returns the total count of objects with valid values on informed attribute
         values = self.get_queryset_values(attribute_name)
-        return len(filter(lambda v: v is not None, values))
+        return len(list(filter(lambda v: v is not None, values)))
 
     def action_avg(self, attribute_name=None):
         values = self.get_queryset_values(attribute_name)
@@ -225,7 +225,7 @@ class ObjectValue(Label):
 
     def action_coalesce(self, attribute_name=None, default=''):
         value = self.get_object_value(attribute_name=attribute_name)
-        return value or unicode(default)
+        return value or str(default)
 
     def _text(self):
         if not self.stores_text_in_cache or self._cached_text is None:
@@ -239,11 +239,11 @@ class ObjectValue(Label):
 
             if self.get_text:
                 try:
-                    self._cached_text = unicode(self.get_text(self, self.instance, value))
+                    self._cached_text = str(self.get_text(self, self.instance, value))
                 except TypeError:
-                    self._cached_text = unicode(self.get_text(self.instance, value))
+                    self._cached_text = str(self.get_text(self.instance, value))
             else:
-                self._cached_text = unicode(value)
+                self._cached_text = str(value)
             
         return self.display_format % self._cached_text
 

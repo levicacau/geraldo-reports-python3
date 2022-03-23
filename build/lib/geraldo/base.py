@@ -896,7 +896,7 @@ class Element(GeraldoObject):
 
     _repr_for_cache_attrs = ('left','top','height','width','visible')
     def repr_for_cache_hash_key(self):
-        return unicode(dict([(attr, getattr(self, attr)) for attr in self._repr_for_cache_attrs]))
+        return str(dict([(attr, getattr(self, attr)) for attr in self._repr_for_cache_attrs]))
 
 class ManyElements(GeraldoObject):
     """Class that makes the objects creation more dynamic."""

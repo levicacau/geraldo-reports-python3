@@ -196,7 +196,7 @@ class BaseChart(Graphic):
         elif isinstance(self.legend_labels, str):
             labels = [self.get_cross_data().first(self.legend_labels, col=label) for label in labels]
 
-        return map(unicode, labels)
+        return map(str, labels)
 
     def get_axis_labels(self):
         # Base labels
@@ -218,7 +218,7 @@ class BaseChart(Graphic):
             else:
                 labels = [self.get_cross_data().first(self.axis_labels, col=label) for label in labels]
 
-        return map(unicode, labels)
+        return map(str, labels)
 
     def make_title(self, drawing):
         if not self.title:

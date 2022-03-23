@@ -124,7 +124,7 @@ def make_hash_key(report, objects_list):
 
         # Situation 2 - mostly queryset objects list
         else:
-            result.append(u'/'.join([unicode(get_attr_value(obj, attr)) for attr in report_attrs()]))
+            result.append(u'/'.join([str(get_attr_value(obj, attr)) for attr in report_attrs()]))
 
     # Makes the hash key
     m = hash_constructor()
