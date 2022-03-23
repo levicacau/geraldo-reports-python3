@@ -1,3 +1,21 @@
+
+Installing
+Geraldo is still not available as an installer or system package. So, you have two ways to install it:
+
+Option 1. Download the source from repository
+
+Then you can do the following steps to install it:
+
+Linux
+
+sudo python setup.py install
+This will copy Geraldo’s packages inside Python’s packages path.
+
+Windows
+
+python setup.py install
+
+
 Overview
 ========
 
